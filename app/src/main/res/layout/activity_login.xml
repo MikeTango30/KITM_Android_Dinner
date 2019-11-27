@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@color/colorBackground">
 
     <TextView
         android:layout_width="match_parent"
@@ -53,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight = "1"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorButtonBgPrimary"
             android:text="@string/login_login_btn"
             android:layout_marginRight="5dp" />
 
@@ -61,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight = "1"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorButtonBgReg"
             android:text="@string/login_register_btn" />
     </LinearLayout>
 
