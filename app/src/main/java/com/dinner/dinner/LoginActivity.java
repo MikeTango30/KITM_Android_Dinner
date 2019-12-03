@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText username = findViewById(R.id.username);
         final EditText password = findViewById(R.id.password);
         Button loginBtn = findViewById(R.id.login_btn);
+        Button registerBtn = findViewById(R.id.register_btn);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,14 @@ public class LoginActivity extends AppCompatActivity {
                 //----------------------------------------------------iš kur-------------į kur---------//
                 Intent gotoSearchActivity = new Intent(LoginActivity.this, SearchActivity.class);
                 startActivity(gotoSearchActivity);
+            }
+        });
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoRegisterActivity = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(gotoRegisterActivity);
             }
         });
 
