@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        
+
         final EditText username = findViewById(R.id.username);
         final EditText password = findViewById(R.id.password);
         Button loginBtn = findViewById(R.id.login_btn);
@@ -25,14 +25,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //čia rašomas kodas, kuris bus vykdomas ant mygtuko paspaudimo//
                 String username2 = username.getText().toString();
-                boolean validUserName = InputValidator.isCredentialsValid(username2);
-                if (!validUserName) {
-                    Toast.makeText(LoginActivity.this, "Username: " + username2 + " is not valid", Toast.LENGTH_SHORT).show();
-                }
                 String password2 = password.getText().toString();
+                boolean validUserName = InputValidator.isCredentialsValid(username2);
                 boolean validPassword = InputValidator.isCredentialsValid(password2);
-                if (!validPassword) {
-                    Toast.makeText(LoginActivity.this, "Password: " + password2 + " is not valid", Toast.LENGTH_SHORT).show();
+                // purgle error logs
+                username.setError(null);
+                password.setError(null);
+                if (!validPassword || !validUserName) {
+                    //show error
+                    username.setError(getResources().getString(R.string.login_invalid_credentials_message));
+                    username.requestFocus();
                 }
                 //----------------------------------------------------iš kur-------------į kur---------//
                 if (validUserName && validPassword) {
@@ -54,3 +56,5 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 }
+
+//TODO email regex

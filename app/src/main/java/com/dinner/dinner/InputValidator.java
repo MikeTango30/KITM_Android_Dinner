@@ -15,5 +15,13 @@ public class InputValidator {
 
 }
 
+//mokytojo pvz
 //pattern for Pattern
 //private static final CREDENTIALS_PATTERN = "^[a-zA-Z]{3,20}$";
+// method for matching pattern
+//public static boolean isCredentialsValid(String credentials) {
+//    Pattern pattern = Pattern.compile(CREDENTIALS_PATTERN);
+//    Matcher matcher = pattern.matcher(credentials);
+//
+//    return matcher.matches();
+//}
