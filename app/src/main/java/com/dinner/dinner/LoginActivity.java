@@ -25,12 +25,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //čia rašomas kodas, kuris bus vykdomas ant mygtuko paspaudimo//
                 String username2 = username.getText().toString();
-                boolean validUserName = InputValidator.checkInputValidity(username2);
+                boolean validUserName = InputValidator.isCredentialsValid(username2);
                 if (!validUserName) {
                     Toast.makeText(LoginActivity.this, "Username: " + username2 + " is not valid", Toast.LENGTH_SHORT).show();
                 }
                 String password2 = password.getText().toString();
-                boolean validPassword = InputValidator.checkInputValidity(password2);
+                boolean validPassword = InputValidator.isCredentialsValid(password2);
                 if (!validPassword) {
                     Toast.makeText(LoginActivity.this, "Password: " + password2 + " is not valid", Toast.LENGTH_SHORT).show();
                 }
