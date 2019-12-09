@@ -25,12 +25,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //čia rašomas kodas, kuris bus vykdomas ant mygtuko paspaudimo//
                 String username2 = username.getText().toString();
+                boolean validUserName = InputValidator.checkInputValidity(username2);
+                if (!validUserName) {
+                    Toast.makeText(LoginActivity.this, "Username: " + username2 + " is not valid", Toast.LENGTH_SHORT).show();
+                }
                 String password2 = password.getText().toString();
-                Toast.makeText(LoginActivity.this, "Username: " + username2 + "\n" + "Password: "
-                        + password2, Toast.LENGTH_SHORT).show();
+                boolean validPassword = InputValidator.checkInputValidity(password2);
+                if (!validPassword) {
+                    Toast.makeText(LoginActivity.this, "Password: " + password2 + " is not valid", Toast.LENGTH_SHORT).show();
+                }
                 //----------------------------------------------------iš kur-------------į kur---------//
-                Intent gotoSearchActivity = new Intent(LoginActivity.this, SearchActivity.class);
-                startActivity(gotoSearchActivity);
+                if (validUserName && validPassword) {
+                    Toast.makeText(LoginActivity.this, "Welcome back, : " + username2, Toast.LENGTH_SHORT).show();
+                    Intent gotoSearchActivity = new Intent(LoginActivity.this, SearchActivity.class);
+                    startActivity(gotoSearchActivity);
+                }
             }
         });
 

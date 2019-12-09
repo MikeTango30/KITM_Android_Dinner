@@ -24,17 +24,18 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //čia rašomas kodas, kuris bus vykdomas ant mygtuko paspaudimo//
-                String name2 = name.getText().toString();
-                String email2 = email.getText().toString();
-                Toast.makeText(RegisterActivity.this, "Name: " + name2 + "\n" + "Email: "
-                        + email2, Toast.LENGTH_SHORT).show();
-                //----------------------------------------------------iš kur-------------į kur---------//
-                Intent gotoLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(gotoLoginActivity);
+            //čia rašomas kodas, kuris bus vykdomas ant mygtuko paspaudimo//
+            String name2 = name.getText().toString();
+            String email2 = email.getText().toString();
+            Toast.makeText(RegisterActivity.this, "Name: " + name2 + "\n" + "Email: "
+                    + email2, Toast.LENGTH_SHORT).show();
+            //----------------------------------------------------iš kur-------------į kur---------//
+            Intent gotoLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(gotoLoginActivity);
             }
         });
 
     }
 
 }
+
