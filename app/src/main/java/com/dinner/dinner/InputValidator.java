@@ -10,7 +10,11 @@ public class InputValidator {
      * @return true if valid
      */
     public static boolean isCredentialsValid(String credentials) {
-        return Pattern.matches("^[a-zA-Z]{3,20}$", credentials);
+        return Pattern.matches("^\\w{3,20}$", credentials);
+    }
+
+    public static boolean isEmailValid(String email) {
+        return Pattern.matches("(\\w+.?\\w+@\\w+-?\\w+.\\w+.?\\w+)", email);
     }
 
 }

@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password2 = password.getText().toString();
                 boolean validUserName = InputValidator.isCredentialsValid(username2);
                 boolean validPassword = InputValidator.isCredentialsValid(password2);
-                // purgle error logs
+                // purge error logs
                 username.setError(null);
                 password.setError(null);
                 if (!validPassword || !validUserName) {

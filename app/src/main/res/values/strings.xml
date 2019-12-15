@@ -15,5 +15,6 @@
     <string name="register_password_repeat">Repeat Password</string>
     <string name="register_check">I give my soul to you</string>
     <string name="login_invalid_credentials_message">Wrong username or password</string>
+    <string name="register_invalid_email_message">Not valid, your Email is.</string>
 
 </resources>

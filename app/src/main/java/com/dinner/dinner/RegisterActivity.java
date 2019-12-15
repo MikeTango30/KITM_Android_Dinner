@@ -27,11 +27,20 @@ public class RegisterActivity extends AppCompatActivity {
             //čia rašomas kodas, kuris bus vykdomas ant mygtuko paspaudimo//
             String name2 = name.getText().toString();
             String email2 = email.getText().toString();
-            Toast.makeText(RegisterActivity.this, "Name: " + name2 + "\n" + "Email: "
-                    + email2, Toast.LENGTH_SHORT).show();
+            boolean validEmail = InputValidator.isEmailValid(email2);
+            // purge error logs
+            email.setError(null);
+            if (!validEmail) {
+                //show error
+                email.setError(getResources().getString(R.string.register_invalid_email_message));
+                email.requestFocus();
+            }
             //----------------------------------------------------iš kur-------------į kur---------//
-            Intent gotoLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(gotoLoginActivity);
+            if (validEmail) {
+                Toast.makeText(RegisterActivity.this, "Welcome aboard!", Toast.LENGTH_SHORT).show();
+                Intent gotoSearchActivity = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(gotoSearchActivity);
+            }
             }
         });
 
