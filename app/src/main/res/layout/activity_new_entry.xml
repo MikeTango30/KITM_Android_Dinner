@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_dinner_type"
+                android:textColor="@color/colorText"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/soup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:text="@string/new_entry_dinner_type_soup"
+                android:checked="true"/>
+
+            <CheckBox
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:text="@string/new_entry_dinner_type_main"
+                android:checked="true"/>
+
+            <CheckBox
+                android:id="@+id/salad"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:text="@string/new_entry_dinner_type_salad"
+                android:checked="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_delivery_type"
+                android:textColor="@color/colorText"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/new_entry_delivery_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/new_entry_delivery_type_no_delivery"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/new_entry_delivery_type_no_delivery" />
+
+                <RadioButton
+                    android:id="@+id/new_entry_delivery_type_yes_delivery"
+                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_entry_delivery_type_yes_delivery" />
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_price"
+                android:textColor="@color/colorText"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/new_entry_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:padding="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_payment_type"
+                android:textColor="@color/colorText"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/new_entry_payment_type"
+                android:padding="10dp">
+
+            </Spinner>
+
+            <Button
+                android:id="@+id/new_entry_create_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_entry_submit_btn"
+                android:background="@color/colorPrimary"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+
+
+

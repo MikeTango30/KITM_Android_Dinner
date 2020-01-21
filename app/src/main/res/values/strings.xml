@@ -6,6 +6,8 @@
     <string name="login_password">Password:</string>
     <string name="login_login_btn">Login</string>
     <string name="login_register_btn">Register</string>
+    <string name="login_invalid_credentials_message">Wrong username or password</string>
+    <string name="login_remember_me">Remember Me</string>
 
     <string name="register_name">Name</string>
     <string name="register_surname">Surname</string>
@@ -14,8 +16,29 @@
     <string name="register_password">Password</string>
     <string name="register_password_repeat">Repeat Password</string>
     <string name="register_check">I give my soul to you</string>
-    <string name="login_invalid_credentials_message">Wrong username or password</string>
     <string name="register_invalid_email_message">Not valid, your Email is.</string>
-    <string name="login_remember_me">Remember Me</string>
+
+    <string name="search_new_entry_btn">New Dinner</string>
+
+    <string name="new_entry_dinner_type">Dinner Type:</string>
+    <string name="new_entry_dinner_type_soup">Soup</string>
+    <string name="new_entry_dinner_type_main">Main Dish</string>
+    <string name="new_entry_dinner_type_salad">Salad</string>
+
+    <string name="new_entry_delivery_type">Delivery:</string>
+    <string name="new_entry_delivery_type_no_delivery">No</string>
+    <string name="new_entry_delivery_type_yes_delivery">Yes</string>
+
+    <string name="new_entry_price">Price:</string>
+
+    <string name="new_entry_payment_type">Payment:</string>
+    <string-array name="new_entry_payment_type">
+        <item>Cash</item>
+        <item>Card</item>
+        <item>BitCoin</item>
+        <item>Work</item>
+        <item>MoQ</item>
+    </string-array>
+    <string name="new_entry_submit_btn">Create</string>
 
 </resources>
