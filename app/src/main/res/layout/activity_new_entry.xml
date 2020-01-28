@@ -101,6 +101,7 @@
                 android:textSize="20sp"/>
 
             <Spinner
+                android:id="@+id/payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/new_entry_payment_type"
