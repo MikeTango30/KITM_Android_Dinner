@@ -40,5 +40,6 @@
         <item>MoQ</item>
     </string-array>
     <string name="new_entry_submit_btn">Create</string>
+    <string name="entryDatabaseInfo">Please wait, sending to DB.</string>
 
 </resources>
