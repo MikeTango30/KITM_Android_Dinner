@@ -21,7 +21,7 @@ if (isset($_POST['insert'])) {
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfuly";
     } else {
-        echo "Error: " . $sql . "<or>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 
