@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class NewEntryActivity extends AppCompatActivity {
 
-    private static final String INSERT_URL = "https://javadinner.000webhostapp.com/mobile/db.php";
+    private static final String INSERT_URL = "http://dinner-dinner.epizy.com/mobile/db.php";
 
     private RadioButton deliveryBtn;
 
@@ -67,22 +67,14 @@ public class NewEntryActivity extends AppCompatActivity {
 
                 Dinner dinner = new Dinner(dinnerTypes, deliveryType, priceValue, paymentValue);
                 insertToDB(dinner);
-                //Toast .makeText (NewEntryActivity.this, dinner.toString(), Toast.LENGTH_LONG) .show();
 
 //                Toast.makeText(NewEntryActivity.this,
-//                        "Your order: " + dinner.getDinnerType() + "\n" +
-//                        "Delivery type: " + dinner.getDelivery() + "\n" +
-//                        "Price: " + dinner.getPrice() + "\n" +
-//                        "Payment Type: " + dinner.getPayment() + "\n",
+//                        "Dinner type: " + dinner.getDinnerType() + "\n" +
+//                                "Delivery type: " + dinner.getDelivery() + "\n" +
+//                                "Price: " + dinner.getPrice() + "\n" +
+//                                "Payment: " + dinner.getPayment() + "\n",
 //                        Toast.LENGTH_SHORT).show();
             }
-            //----------------------------------------------------iš kur-------------į kur---------//
-//                if (validEmail) {
-//                    Toast.makeText(RegisterActivity.this, "Welcome aboard!", Toast.LENGTH_SHORT).show();
-//                    Intent gotoSearchActivity = new Intent(RegisterActivity.this, LoginActivity.class);
-//                    startActivity(gotoSearchActivity);
-//                }
-
         });
 
     }
@@ -99,7 +91,7 @@ public class NewEntryActivity extends AppCompatActivity {
                 super.onPreExecute();
                 loading = ProgressDialog.show(NewEntryActivity.this,
 
-                        getResources().getString(R.string.entryDatabaseInfo),
+                        getResources().getString(R.string.new_entry_database_info),
                         null, true, true);
 
             }
@@ -133,10 +125,12 @@ public class NewEntryActivity extends AppCompatActivity {
 
         NewEntry newEntry = new NewEntry();
 
-        newEntry.execute(dinner.getDinnerType(),
+        newEntry.execute(
+                dinner.getDinnerType(),
                 dinner.getDelivery(),
-                dinner.getPayment(),
-                Double.toString(dinner.getPrice()));
+                Double.toString(dinner.getPrice()),
+                dinner.getPayment()
+                );
 
     }
 }
