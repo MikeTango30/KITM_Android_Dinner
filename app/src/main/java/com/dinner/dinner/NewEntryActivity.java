@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 public class NewEntryActivity extends AppCompatActivity {
 
-    private static final String INSERT_URL = "http://dinner-dinner.epizy.com/mobile/db.php";
+    public static final String INSERT_URL = "http://dinner-dinner.epizy.com/mobile/db.php";
 
     private RadioButton deliveryBtn;
 

@@ -8,9 +8,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +42,7 @@ public class SearchActivity extends AppCompatActivity {
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
-    private RecyclerView mRVPokemon;
+    private RecyclerView mRVDinner;
     private AdapterDinner mAdapter;
     private HashMap<String, String> data;
 
@@ -119,7 +120,7 @@ public class SearchActivity extends AppCompatActivity {
             super.onPreExecute();
 
             //this method will be running on UI thread
-            pdLoading.setMessage(getResources().getString(R.string.entry_db_loading_msg));
+            pdLoading.setMessage(getResources().getString(R.string.new_entry_database_info));
             pdLoading.setCancelable(false);
             pdLoading.show();
 
@@ -130,7 +131,7 @@ public class SearchActivity extends AppCompatActivity {
             try {
 
                 // Enter URL address where your php file resides
-                url = new URL(NewEntryActivity.DB_URL);
+                url = new URL(NewEntryActivity.INSERT_URL);
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -148,8 +149,10 @@ public class SearchActivity extends AppCompatActivity {
                 // byethost naudoja antibot sistema, todel reikia kiekvienam rankutėmis suvesti cookie turinį,
                 // kuris pas kiekviena bus skirtingas. kaip tai padaryti zemiau nuoroda
                 // http://stackoverflow.com/questions/31912000/byethost-server-passing-html-values-checking-your-browser-with-json-string
-                //7a4d917e220fbf9a55cab3046bd1a3b7
-                conn.setRequestProperty("Cookie", "__test=7a4d917e220fbf9a55cab3046bd1a3b7; expires=2038 m. sausio 1 d., penktadienis 01:55:55; path=/");
+                // mano tel cookie: 8d4209b71e9b28544077fec93d66762e
+                // kitm cookie: 7a4d917e220fbf9a55cab3046bd1a3b7
+                conn.setRequestProperty("Cookie", "__test=8d4209b71e9b28544077fec93d66762e; expires=2038 m. sausio 1 d., penktadienis 01:55:55; path=/");
+
 
                 // setDoInput and setDoOutput to true as we send and recieve data
                 conn.setDoInput(true);
@@ -213,7 +216,7 @@ public class SearchActivity extends AppCompatActivity {
 
             //this method will be running on UI thread
             pdLoading.dismiss();
-            List<Pokemon> data=new ArrayList<Pokemon>();
+            List<Dinner> data=new ArrayList<Dinner>();
 
             pdLoading.dismiss();
             if(result.equals("no rows")) {
@@ -227,26 +230,22 @@ public class SearchActivity extends AppCompatActivity {
                     // Extract data from json and store into ArrayList as class objects
                     for (int i = 0; i < jArray.length(); i++) {
                         JSONObject json_data = jArray.getJSONObject(i);
-                        //public Car(int id, String data, String brand, String color, int year, String type, String defect)
-                        Pokemon pokemon = new Pokemon(
+                        Dinner dinner = new Dinner(
                                 json_data.getInt("id"),
-                                json_data.getString("data"),
-                                json_data.getString("name"),
-                                json_data.getInt("weight"),
-                                json_data.getString("cp"),
-                                json_data.getString("abilities"),
-                                json_data.getString("type")
-
+                                json_data.getString("dinner_type"),
+                                json_data.getString("delivery"),
+                                json_data.getDouble("price"),
+                                json_data.getString("payment")
                         );
-                        Log.e("pokemon",pokemon.getName()+ " "+ pokemon.getData());
-                        data.add(pokemon);
+                        Log.e("dinner",dinner.getDinnerType()+ " "+ dinner.getPrice());
+                        data.add(dinner);
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVPokemon = (RecyclerView) findViewById(R.id.pokemonList);
+                    mRVDinner = (RecyclerView) findViewById(R.id.dinnerList);
                     mAdapter = new AdapterDinner(SearchActivity.this, data);
-                    mRVPokemon.setAdapter(mAdapter);
-                    mRVPokemon.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+                    mRVDinner.setAdapter(mAdapter);
+                    mRVDinner.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
 
                 } catch (JSONException e) {
                     // You to understand what actually error is and handle it appropriately
