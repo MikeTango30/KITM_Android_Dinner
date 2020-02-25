@@ -12,7 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Name"
         android:textColor="@color/colorAccent"
-        android:id="@+id/textName"
+        android:id="@+id/textDinnerType"
         android:layout_marginLeft="5dp"/>
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Cp"
-        android:id="@+id/textCp"
+        android:id="@+id/textPrice"
         android:textColor="@color/colorPrimaryDark"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="5dp"
@@ -34,9 +34,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Weight"
-        android:id="@+id/textWeight"
+        android:id="@+id/textDelivery"
         android:layout_marginLeft="5dp"
-        android:layout_below="@id/textName"
+        android:layout_below="@id/textDinnerType"
         android:textColor="#666"/>
 
     <TextView
@@ -44,9 +44,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Abilities"
-        android:id="@+id/textAbilities"
+        android:id="@+id/textPayment"
         android:layout_marginLeft="5dp"
-        android:layout_below="@id/textWeight"
+        android:layout_below="@id/textDelivery"
         android:textColor="#666"/>
 
 </RelativeLayout>

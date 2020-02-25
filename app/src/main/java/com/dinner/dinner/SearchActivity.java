@@ -29,15 +29,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -45,7 +42,7 @@ public class SearchActivity extends AppCompatActivity {
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     private RecyclerView mRVPokemon;
-    private AdapterPokemon mAdapter;
+    private AdapterDinner mAdapter;
     private HashMap<String, String> data;
 
     SearchView searchView = null;
@@ -247,7 +244,7 @@ public class SearchActivity extends AppCompatActivity {
 
                     // Setup and Handover data to recyclerview
                     mRVPokemon = (RecyclerView) findViewById(R.id.pokemonList);
-                    mAdapter = new AdapterPokemon(SearchActivity.this, data);
+                    mAdapter = new AdapterDinner(SearchActivity.this, data);
                     mRVPokemon.setAdapter(mAdapter);
                     mRVPokemon.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
 

@@ -2,13 +2,18 @@ package com.dinner.dinner;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.List;
+
 
 public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -16,24 +21,24 @@ public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Context context;
     private LayoutInflater inflater;
-    List<Pokemon> data = Collections.emptyList();
-    Pokemon current;
+    List<Dinner> data = Collections.emptyList();
+    Dinner current;
     int currentPos = 0;
 
     // create constructor to initialize context and data sent from MainActivity
-    public AdapterDinner(Context context, List<Pokemon> data) {
+    public AdapterDinner(Context context, List<Dinner> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
-        for (Pokemon pokemon : data) {
-            Log.e("pokemon", pokemon.getName() + " " + pokemon.getWeight());
+        for (Dinner dinner : data) {
+            Log.e("dinner", dinner.getDinnerType() + " " + dinner.getPrice());
         }
     }
 
     // Inflate the layout when ViewHolder created
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.container_pokemon, parent, false);
+        View view = inflater.inflate(R.layout.container_dinner, parent, false);
         MyHolder holder = new MyHolder(view);
         return holder;
     }
@@ -44,12 +49,12 @@ public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         // Get current position of item in RecyclerView to bind data and assign values from list
         MyHolder myHolder = (MyHolder) holder;
-        Pokemon current = data.get(position);
-        myHolder.textName.setText(current.getName());
-        myHolder.textWeight.setText("Weight: " + current.getWeight());
-        myHolder.textCp.setText("Cp: " + current.getCp());
-        myHolder.textAbilities.setText("Abilities: " + current.getAbilities());
-        Log.e("pokemon", current.getName() + " " + current.getWeight());
+        Dinner current = data.get(position);
+        myHolder.textDinnerType.setText("Dinner Type: " + current.getDinnerType());
+        myHolder.textDelivery.setText("Delivery: " + current.getDelivery());
+        myHolder.textPrice.setText("Price: " + current.getPrice());
+        myHolder.textPayment.setText("Payment: " + current.getPayment());
+        Log.e("dinner", current.getDinnerType() + " " + current.getPrice());
 
     }
 
@@ -62,18 +67,18 @@ public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView textName;
-        TextView textWeight;
-        TextView textCp;
-        TextView textAbilities;
+        TextView textDinnerType;
+        TextView textDelivery;
+        TextView textPrice;
+        TextView textPayment;
 
         // create constructor to get widget reference
         public MyHolder(View itemView) {
             super(itemView);
-            textName = (TextView) itemView.findViewById(R.id.textName);
-            textWeight = (TextView) itemView.findViewById(R.id.textWeight);
-            textCp = (TextView) itemView.findViewById(R.id.textCp);
-            textAbilities = (TextView) itemView.findViewById(R.id.textAbilities);
+            textDinnerType = (TextView) itemView.findViewById(R.id.textDinnerType);
+            textDelivery = (TextView) itemView.findViewById(R.id.textDelivery);
+            textPrice = (TextView) itemView.findViewById(R.id.textPrice);
+            textPayment = (TextView) itemView.findViewById(R.id.textPayment);
             itemView.setOnClickListener(this);
         }
 
@@ -82,13 +87,14 @@ public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void onClick(View v) {
             int itemPosition = getAdapterPosition();
 
-            Pokemon pokemon = data.get(itemPosition);
+            Dinner dinner = data.get(itemPosition);
 
-            Intent intent = new Intent(context, NewEntryActivity.class);
-            intent.putExtra(ENTRY, pokemon);
-            context.startActivity(intent);
+            Toast.makeText(context, dinner.getDinnerType() + " \n" + dinner.getPrice(), Toast.LENGTH_SHORT).show();
+
+//            Intent intent = new Intent(context, NewEntryActivity.class);
+//            intent.putExtra(ENTRY, dinner);
+//            context.startActivity(intent);
         }
 
     }
-
 }
