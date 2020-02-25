@@ -17,6 +17,7 @@
     <string name="register_password_repeat">Repeat Password</string>
     <string name="register_check">I give my soul to you</string>
     <string name="register_invalid_email_message">Not valid, your Email is.</string>
+    <string name="register_invalid_password_message">Not valid, your Password is.</string>
 
     <string name="search_new_entry_btn">New Dinner</string>
 
