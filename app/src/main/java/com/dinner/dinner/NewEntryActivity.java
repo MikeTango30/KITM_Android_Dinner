@@ -100,7 +100,7 @@ public class NewEntryActivity extends AppCompatActivity {
             protected String doInBackground(String... strings) {
                 // Pirmas string yra raktas, antras - reiksmé.
                 HashMap<String, String> dinnerData = new HashMap<String, String>();
-                dinnerData.put("type", strings[0]);
+                dinnerData.put("dinner_type", strings[0]);
                 dinnerData.put("delivery", strings[1]);
                 dinnerData.put("price", strings[2]);
                 dinnerData.put("payment", strings[3]);
