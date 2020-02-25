@@ -10,6 +10,14 @@
         android:padding="10dp"
         android:background="@color/colorBackground">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/pokemonList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:layout_weight="1"
+            />
+
         <Button
             android:id="@+id/new_entry_btn"
             android:layout_width="match_parent"
