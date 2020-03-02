@@ -25,7 +25,8 @@
             android:layout_weight = "1"
             android:background="@color/colorButtonBgPrimary"
             android:text="@string/search_new_entry_btn"
-            android:layout_marginTop="450dp" />
+            android:layout_gravity="bottom"/>
+<!--            android:layout_marginTop="450dp" />-->
 
     </LinearLayout>
 </ScrollView>
