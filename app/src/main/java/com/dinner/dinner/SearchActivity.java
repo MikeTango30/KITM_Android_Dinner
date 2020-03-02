@@ -7,17 +7,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -150,8 +150,9 @@ public class SearchActivity extends AppCompatActivity {
                 // kuris pas kiekviena bus skirtingas. kaip tai padaryti zemiau nuoroda
                 // http://stackoverflow.com/questions/31912000/byethost-server-passing-html-values-checking-your-browser-with-json-string
                 // mano tel cookie: 8d4209b71e9b28544077fec93d66762e
+//                mano tel cookie2: 6ea257b48507309ecb860b2a366001ef
                 // kitm cookie: 7a4d917e220fbf9a55cab3046bd1a3b7
-                conn.setRequestProperty("Cookie", "__test=8d4209b71e9b28544077fec93d66762e; expires=2038 m. sausio 1 d., penktadienis 01:55:55; path=/");
+                conn.setRequestProperty("Cookie", "__test=6ea257b48507309ecb860b2a366001ef; expires=2038 m. sausio 1 d., penktadienis 01:55:55; path=/");
 
 
                 // setDoInput and setDoOutput to true as we send and recieve data
