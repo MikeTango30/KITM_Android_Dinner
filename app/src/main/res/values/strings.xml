@@ -23,7 +23,7 @@
 
     <string name="new_entry_dinner_type">Dinner Type:</string>
     <string name="new_entry_dinner_type_soup">Soup</string>
-    <string name="new_entry_dinner_type_main">Main Dish</string>
+    <string name="new_entry_dinner_type_main">Main</string>
     <string name="new_entry_dinner_type_salad">Salad</string>
 
     <string name="new_entry_delivery_type">Delivery:</string>

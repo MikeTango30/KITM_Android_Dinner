@@ -1,27 +1,33 @@
 package com.dinner.dinner;
 
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.content.Intent;
-
-import java.util.HashMap;
-
-import android.widget.Spinner;
+import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.HashMap;
 
 public class NewEntryActivity extends AppCompatActivity {
 
     public static final String INSERT_URL = "http://dinner-dinner.epizy.com/mobile/db.php";
+    Dinner dinner;
+
+    CheckBox checkSoup;
+    CheckBox checkMainDish;
+    CheckBox checkSalad;
+    RadioGroup deliveryGroup;
+    EditText price;
+    Spinner payment;
 
     private RadioButton deliveryBtn;
 
@@ -30,43 +36,39 @@ public class NewEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_entry);
 
-        final CheckBox checkSoup = findViewById(R.id.soup);
-        final CheckBox checkMainDish = findViewById(R.id.main);
-        final CheckBox checkSalad = findViewById(R.id.salad);
-        final RadioGroup deliveryGroup = findViewById(R.id.new_entry_delivery_group);
-        final EditText price = findViewById(R.id.new_entry_price);
-        final Spinner payment = findViewById(R.id.payment);
+        //check if new or existsting entry
+        Intent intent = getIntent();
+        dinner = (Dinner) intent.getSerializableExtra(AdapterDinner.ENTRY);
+
+        if (dinner == null) { //new entry - values by default
+            dinner = new Dinner(
+                    -1, // not in db
+                    getResources().getString(R.string.new_entry_dinner_type_main),
+                    getResources().getString(R.string.new_entry_delivery_type_no_delivery),
+                    0,
+                    getResources().getStringArray(R.array.new_entry_payment_type).toString()
+            );
+        } else { // exixting entry, values by entry
+            setDataFromEntry(dinner);
+            // TODO impelement update and delete
+        }
+
+        setDataFromEntry(dinner);
+
+        checkSoup = findViewById(R.id.soup);
+        checkMainDish = findViewById(R.id.main);
+        checkSalad = findViewById(R.id.salad);
+        deliveryGroup = findViewById(R.id.new_entry_delivery_group);
+        price = findViewById(R.id.new_entry_price);
+        payment = findViewById(R.id.payment);
 
         Button createBtn = findViewById(R.id.new_entry_create_btn);
         createBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                //get checkboxes input
-                String dinnerTypes = "";
-                if (checkSoup.isChecked()) {
-                    dinnerTypes = dinnerTypes + checkSoup.getText().toString() + " ";
-                }
-                if (checkMainDish.isChecked()) {
-                    dinnerTypes = dinnerTypes + checkMainDish.getText().toString() + " ";
-                }
-                if (checkSalad.isChecked()) {
-                    dinnerTypes = dinnerTypes + checkSalad.getText().toString();
-                }
-
-                // get radio input
-                int selectedId = deliveryGroup.getCheckedRadioButtonId();
-                deliveryBtn = findViewById(selectedId);
-                String deliveryType = deliveryBtn.getText().toString();
-
-                //get price
-                double priceValue = Double.parseDouble(price.getText().toString());
-
-                // get payment
-                String paymentValue = String.valueOf(payment.getSelectedItem());
-
-                Dinner dinner = new Dinner(dinnerTypes, deliveryType, priceValue, paymentValue);
-                insertToDB(dinner);
+                Dinner dinnerFromForm = getDataFromForm();
+                insertToDB(dinnerFromForm);
 
 //                Toast.makeText(NewEntryActivity.this,
 //                        "Dinner type: " + dinner.getDinnerType() + "\n" +
@@ -76,6 +78,69 @@ public class NewEntryActivity extends AppCompatActivity {
 //                        Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    private Dinner getDataFromForm() {
+        //get checkboxes input
+        String dinnerTypes = "";
+        if (checkSoup.isChecked()) {
+            dinnerTypes = dinnerTypes + checkSoup.getText().toString() + " ";
+        }
+        if (checkMainDish.isChecked()) {
+            dinnerTypes = dinnerTypes + checkMainDish.getText().toString() + " ";
+        }
+        if (checkSalad.isChecked()) {
+            dinnerTypes = dinnerTypes + checkSalad.getText().toString();
+        }
+
+        // get radio input
+        int selectedId = deliveryGroup.getCheckedRadioButtonId();
+        deliveryBtn = findViewById(selectedId);
+        String deliveryType = deliveryBtn.getText().toString();
+
+        //get price
+        double priceValue = Double.parseDouble(price.getText().toString());
+
+        // get payment
+        String paymentValue = String.valueOf(payment.getSelectedItem());
+
+        Dinner dinner = new Dinner(dinnerTypes, deliveryType, priceValue, paymentValue);
+
+        return dinner;
+    }
+
+    private void setDataFromEntry(Dinner dinner) {
+
+        boolean isChecked = false;
+        if (dinner.getDinnerType().contains(getResources().getString(R.string.new_entry_dinner_type_soup))) {
+            checkSoup.setChecked(true);
+            isChecked = true;
+        }
+        if (dinner.getDinnerType().contains(getResources().getString(R.string.new_entry_dinner_type_main))) {
+            checkMainDish.setChecked(true);
+            isChecked = true;
+        }
+        if (dinner.getDinnerType().contains(getResources().getString(R.string.new_entry_dinner_type_salad))) {
+            checkSalad.setChecked(true);
+            isChecked = true;
+        }
+        if(!isChecked) {
+            checkMainDish.setChecked(true);
+        }
+
+        if (!dinner.getDelivery().equalsIgnoreCase(getResources().getString(R.string.new_entry_delivery_type_no_delivery))) {
+            ((RadioButton)deliveryGroup.getChildAt(0)).setChecked(true);
+        } else {
+            ((RadioButton)deliveryGroup.getChildAt(1)).setChecked(true);
+        }
+
+        price.setText(String.valueOf(dinner.getPrice()));
+
+        //TODO spinner
+//        if(dinner.getPayment().equalsIgnoreCase(getResources().getString(R.string.new_entry_payment_type))) {
+//        payment.setSelection();
+//        }
 
     }
 
@@ -130,7 +195,7 @@ public class NewEntryActivity extends AppCompatActivity {
                 dinner.getDelivery(),
                 Double.toString(dinner.getPrice()),
                 dinner.getPayment()
-                );
+        );
 
     }
 }

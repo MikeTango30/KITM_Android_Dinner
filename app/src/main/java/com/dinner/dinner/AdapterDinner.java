@@ -17,7 +17,7 @@ import java.util.List;
 
 public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final String ENTRY = "com.example.mokytojas.myapplication.ENTRY";
+    public static final String ENTRY = "com.dinner.dinner.ENTRY";
 
     private Context context;
     private LayoutInflater inflater;
@@ -91,9 +91,9 @@ public class AdapterDinner extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             Toast.makeText(context, dinner.getDinnerType() + " \n" + dinner.getPrice(), Toast.LENGTH_SHORT).show();
 
-//            Intent intent = new Intent(context, NewEntryActivity.class);
-//            intent.putExtra(ENTRY, dinner);
-//            context.startActivity(intent);
+            Intent intent = new Intent(context, NewEntryActivity.class);
+            intent.putExtra(ENTRY, dinner);
+            context.startActivity(intent);
         }
 
     }

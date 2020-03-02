@@ -28,24 +28,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp"
-                android:text="@string/new_entry_dinner_type_soup"
-                android:checked="true"/>
+                android:text="@string/new_entry_dinner_type_soup" />
 
             <CheckBox
                 android:id="@+id/main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp"
-                android:text="@string/new_entry_dinner_type_main"
-                android:checked="true"/>
+                android:text="@string/new_entry_dinner_type_main"/>
 
             <CheckBox
                 android:id="@+id/salad"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp"
-                android:text="@string/new_entry_dinner_type_salad"
-                android:checked="true"/>
+                android:text="@string/new_entry_dinner_type_salad"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,7 +63,6 @@
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/new_entry_delivery_type_no_delivery" />
 
                 <RadioButton
